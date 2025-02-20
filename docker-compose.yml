@@ -43,7 +43,7 @@ services:
   streamlit-app:
     build:
       context: .
-      dockerfile: Dockerfile.streamlit  # Dockerfile для app.py
+      dockerfile: Dockerfiles/Dockerfile.streamlit  # Dockerfile для app.py
     ports:
       - "8501:8501"
     networks:
@@ -56,7 +56,7 @@ services:
   jupyter:
     build:
       context: .
-      dockerfile: Dockerfile.jupyter  # Dockerfile для Jupyter
+      dockerfile: Dockerfiles/Dockerfile.jupyter  # Dockerfile для Jupyter
     ports:
       - "8888:8888"
     networks:
@@ -68,7 +68,7 @@ services:
   model:
       build:
         context: .
-        dockerfile: Dockerfile.model  # Dockerfile для model.py
+        dockerfile: Dockerfiles/Dockerfile.model  # Dockerfile для model.py
       ports:
         - "10000:10000"
       networks:

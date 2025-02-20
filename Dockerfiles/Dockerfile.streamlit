@@ -5,9 +5,10 @@ FROM python:3.9
 WORKDIR /app
 
 # Копируем все необходимые файлы
-COPY req_app.txt .  
-COPY config.py .  
-COPY app.py .
+COPY ../requirements/req_app.txt . 
+
+COPY ../src/config.py .  
+COPY ../src/app.py .
 
 # Устанавливаем зависимости
 RUN python -m pip install --upgrade pip
