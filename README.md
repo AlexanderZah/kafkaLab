@@ -25,6 +25,8 @@ Once the containers are up and running, you can access the training metrics dash
 
 http://localhost:8501/
 
+and wait 1-2 minutes
+
 # Features
 
 - **Real-time Monitoring**: The dashboard shows real-time updates of various model metrics, including:
