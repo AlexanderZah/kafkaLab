@@ -3,6 +3,7 @@ import xgboost as xgb
 import warnings
 from sklearn.model_selection import train_test_split
 import numpy as np
+import random
 
 import json
 import time
@@ -39,7 +40,7 @@ class KafkaCallback(xgb.callback.TrainingCallback):
         producer_1.produce(config.topic_train_metrics, key='log_loss', value=json.dumps(data))
         producer_1.flush()
         print(f"Sent to Kafka: {data}")
-        time.sleep(1)
+        time.sleep(random.randint(1, 2))
         return False  # Возвращаем False, чтобы продолжить обучение
 
 
@@ -53,7 +54,7 @@ params = {
 
 X_buffer = []
 y_buffer = []
-batch_size = 100  # Размер батча для обучения
+batch_size = 50  # Размер батча для обучения
 
 while True:
     message = consumer_0.poll(1000)

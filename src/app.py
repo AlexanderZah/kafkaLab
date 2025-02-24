@@ -26,18 +26,21 @@ for metric in metrics:
 # Отображаем каждый график для метрики
 while True:
     message = consumer.poll(1000)
-    
+    value = message.value()
+
+    if value is None:
+        continue
     if message is None:
         st.write("Нет новых сообщений...")
         continue
-    
+
     stock_data = json.loads(message.value().decode('utf-8'))
 
     # Добавляем данные в session_state для каждой метрики
     for key, value in stock_data.items():
         if key in metrics:
             st.session_state[key].append(value)
-    
+
     # Отображаем графики для каждой метрики
     for metric in metrics:
         if len(st.session_state[metric]) > 0:
